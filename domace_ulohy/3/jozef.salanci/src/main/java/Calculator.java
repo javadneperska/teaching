@@ -23,6 +23,7 @@ public class Calculator {
     private static String chooseLanEN = "Please choose language";
     private static String firstNumberEN = "Enter first number";
     private static String secondNumberEN = "Enter second number";
+    private static String chooseOperationsEN ="Choose from those choices";
     private static String errorEN = "Invalid input!! (please enter number)";
     private static String error1EN = "Invalid input!! (please enter integer)";
     private static String error2EN = "Please choose any option";
@@ -30,13 +31,20 @@ public class Calculator {
     private static String outputEN = "Outputs";
     private static String menuQuitEN = "Quit";
 
+
+    private static String operationAddSK = "Sčítanie";
+    private static String operationSubSK = "Odčítanie";
+    private static String operationMulSK = "Násobenie";
+    private static String operationDivSK = "Delenie";
+
     private static String headerSK = "Kalkulačka";
-    private static String firstNumberSk = "Enter first number";
-    private static String secondNumberSK = "Enter second number";
-    private static String errorSK = "Invalid input!! (please enter number)";
-    private static String error1SK = "Invalid input!! (please enter integer)";
-    private static String error2SK = "Please choose any option";
-    private static String error3SK = "Please enter valid option from 1 - 5";
+    private static String firstNumberSk = "Zadaj prvé číslo";
+    private static String secondNumberSK = "Zadaj druhé číslo";
+    private static String chooseOperationsSK ="Vyber si operáciu";
+    private static String errorSK = "Nesprávny vstup!! (please enter number)";
+    private static String error1SK = "Nesprávny vstup!! (please enter integer)";
+    private static String error2SK = "Prosím vyber nejaku možnosť";
+    private static String error3SK = "Prosím vyber správnu možnosť od 1 - 5";
     private static String outputSK = "Výsledky";
     private static String menuQuitSK = "Koniec";
 
@@ -44,74 +52,9 @@ public class Calculator {
         RESET("\033[0m"),
 
         // Regular Colors
-        BLACK("\033[0;30m"),    // BLACK
         RED("\033[0;31m"),      // RED
         GREEN("\033[0;32m"),    // GREEN
-        YELLOW("\033[0;33m"),   // YELLOW
-        BLUE("\033[0;34m"),     // BLUE
-        MAGENTA("\033[0;35m"),  // MAGENTA
-        CYAN("\033[0;36m"),     // CYAN
-        WHITE("\033[0;37m"),    // WHITE
-
-        // Bold
-        BLACK_BOLD("\033[1;30m"),   // BLACK
-        RED_BOLD("\033[1;31m"),     // RED
-        GREEN_BOLD("\033[1;32m"),   // GREEN
-        YELLOW_BOLD("\033[1;33m"),  // YELLOW
-        BLUE_BOLD("\033[1;34m"),    // BLUE
-        MAGENTA_BOLD("\033[1;35m"), // MAGENTA
-        CYAN_BOLD("\033[1;36m"),    // CYAN
-        WHITE_BOLD("\033[1;37m"),   // WHITE
-
-        // Underline
-        BLACK_UNDERLINED("\033[4;30m"),     // BLACK
-        RED_UNDERLINED("\033[4;31m"),       // RED
-        GREEN_UNDERLINED("\033[4;32m"),     // GREEN
-        YELLOW_UNDERLINED("\033[4;33m"),    // YELLOW
-        BLUE_UNDERLINED("\033[4;34m"),      // BLUE
-        MAGENTA_UNDERLINED("\033[4;35m"),   // MAGENTA
-        CYAN_UNDERLINED("\033[4;36m"),      // CYAN
-        WHITE_UNDERLINED("\033[4;37m"),     // WHITE
-
-        // Background
-        BLACK_BACKGROUND("\033[40m"),   // BLACK
-        RED_BACKGROUND("\033[41m"),     // RED
-        GREEN_BACKGROUND("\033[42m"),   // GREEN
-        YELLOW_BACKGROUND("\033[43m"),  // YELLOW
-        BLUE_BACKGROUND("\033[44m"),    // BLUE
-        MAGENTA_BACKGROUND("\033[45m"), // MAGENTA
-        CYAN_BACKGROUND("\033[46m"),    // CYAN
-        WHITE_BACKGROUND("\033[47m"),   // WHITE
-
-        // High Intensity
-        BLACK_BRIGHT("\033[0;90m"),     // BLACK
-        RED_BRIGHT("\033[0;91m"),       // RED
-        GREEN_BRIGHT("\033[0;92m"),     // GREEN
-        YELLOW_BRIGHT("\033[0;93m"),    // YELLOW
-        BLUE_BRIGHT("\033[0;94m"),      // BLUE
-        MAGENTA_BRIGHT("\033[0;95m"),   // MAGENTA
-        CYAN_BRIGHT("\033[0;96m"),      // CYAN
-        WHITE_BRIGHT("\033[0;97m"),     // WHITE
-
-        // Bold High Intensity
-        BLACK_BOLD_BRIGHT("\033[1;90m"),    // BLACK
-        RED_BOLD_BRIGHT("\033[1;91m"),      // RED
-        GREEN_BOLD_BRIGHT("\033[1;92m"),    // GREEN
-        YELLOW_BOLD_BRIGHT("\033[1;93m"),   // YELLOW
-        BLUE_BOLD_BRIGHT("\033[1;94m"),     // BLUE
-        MAGENTA_BOLD_BRIGHT("\033[1;95m"),  // MAGENTA
-        CYAN_BOLD_BRIGHT("\033[1;96m"),     // CYAN
-        WHITE_BOLD_BRIGHT("\033[1;97m"),    // WHITE
-
-        // High Intensity backgrounds
-        BLACK_BACKGROUND_BRIGHT("\033[0;100m"),     // BLACK
-        RED_BACKGROUND_BRIGHT("\033[0;101m"),       // RED
-        GREEN_BACKGROUND_BRIGHT("\033[0;102m"),     // GREEN
-        YELLOW_BACKGROUND_BRIGHT("\033[0;103m"),    // YELLOW
-        BLUE_BACKGROUND_BRIGHT("\033[0;104m"),      // BLUE
-        MAGENTA_BACKGROUND_BRIGHT("\033[0;105m"),   // MAGENTA
-        CYAN_BACKGROUND_BRIGHT("\033[0;106m"),      // CYAN
-        WHITE_BACKGROUND_BRIGHT("\033[0;107m");     // WHITE
+        BLUE("\033[0;34m");     // BLUE
 
         private final String code;
 
@@ -136,7 +79,7 @@ public class Calculator {
     private static void line(String description) {
         System.out.format("+--------------------------------------------------+%n");
 //        System.out.format("|\033[1;34m %-48s \033[0m|%n", description);
-        System.out.format("|%s %-48s %s%n", Color.BLUE, description, Color.RESET);
+        System.out.format("|%s %-48s %s|%n", Color.BLUE, description, Color.RESET);
         System.out.format("+--------------------------------------------------+%n");
     }
 
@@ -162,19 +105,18 @@ public class Calculator {
     private static void lineError(String description) {
 //        System.out.format("\033[0;91m\033[47m+--------------------------------------------------+\033[0m%n");
         System.out.format("%s+--------------------------------------------------+%s%n",Color.RED, Color.RESET);
-        System.out.format("\033[0;91m| %-48s |%s%n", description, RESET);
+        System.out.format("%s| %-48s |%s%n",Color.RED, description, RESET);
         System.out.format("%s+--------------------------------------------------+%s%n",Color.RED, Color.RESET);
     }
 
     private static void lineInfo(String description) {
         System.out.format("%s+--------------------------------------------------+%s%n",Color.GREEN, Color.RESET);
-        System.out.format("\033[0;91m| %-48s |%s%n", description, RESET);
+        System.out.format("%s| %-48s |%s%n",Color.GREEN, description, Color.RESET);
         System.out.format("%s+--------------------------------------------------+%s%n",Color.GREEN, Color.RESET);
     }
 
     private static String getLanguage() {
         int languageOption;
-//        lineHeader(headerEN);
         boolean done = true;
         do {
             try {
@@ -197,12 +139,12 @@ public class Calculator {
 //        lineHeader(headerEN);
         boolean done = true;
         do {
-            line(firstNumberEN);
+            line(languageVariant(firstNumberEN, firstNumberSk));
             try {
                 firstNum = input.nextDouble();
                 done = false;
             } catch (InputMismatchException e) {
-                lineError(errorEN);
+                lineError(languageVariant(errorEN,errorSK));
                 input.nextLine();
             }
         } while (done);
@@ -212,12 +154,12 @@ public class Calculator {
     private static double getSecondNum() {
         boolean done = true;
         do {
-            line(secondNumberEN);
+            line(languageVariant(secondNumberEN, secondNumberSK));
             try {
                 secondNum = input.nextDouble();
                 done = false;
             } catch (InputMismatchException e) {
-                lineError(errorEN);
+                lineError(languageVariant(errorEN, errorSK));
                 input.nextLine();
             }
         } while (done);
@@ -265,26 +207,45 @@ public class Calculator {
         line(chooseLanEN);
     }
 
-    private static void menuOperations(String language) {
-        if (language == "EN") {
-            line("Choose from those choices");
-        } else {
-            line("Vyber si operaciu");
-        }
-        lineMenu(" 1 - \033[0;32m" + operationAddEN + " (+)\033[0m");
-        lineMenu(" 2 - \033[0;32m" + operationSubEN + " (-)\033[0m");
-        lineMenu(" 3 - \033[0;32m" + operationMulEN + " (*)\033[0m");
-        lineMenu(" 4 - \033[0;32m" + operationDivEN + " (/)\033[0m");
-        lineMenu();
 
+    private static void languageOutputError(String enString, String skString){
         if (language == "EN") {
-            lineMenu(" 5 - \033[0;32m" + menuQuitEN + "\033[0m");
+            lineError(enString);
         } else {
-            lineMenu(" 5 - \033[0;32m" + menuQuitSK + "\033[0m");
+            lineError(skString);
         }
-        line();
 
     }
+
+    private static void languageOutputInfo(String enString, String skString){
+        if (language == "EN") {
+            lineInfo(enString);
+        } else {
+            lineInfo(skString);
+        }
+
+    }
+
+    private static String languageVariant(String enString, String skString){
+        if (language == "EN") {
+            return enString;
+        } else {
+            return skString;
+        }
+    }
+
+    private static void menuOperations(String language) {
+        line(languageVariant(chooseOperationsEN, chooseOperationsSK));
+//        languageOutput(chooseOperationsEN, chooseOperationsSK);
+        lineMenu(" 1 - \033[0;32m" + languageVariant(operationAddEN, operationAddSK) + " (+)\033[0m");
+        lineMenu(" 2 - \033[0;32m" + languageVariant(operationSubEN, operationSubSK) + " (-)\033[0m");
+        lineMenu(" 3 - \033[0;32m" + languageVariant(operationMulEN, operationMulSK) + " (*)\033[0m");
+        lineMenu(" 4 - \033[0;32m" + languageVariant(operationDivEN, operationDivSK) + " (/)\033[0m");
+        lineMenu();
+        lineMenu(languageVariant(menuQuitEN, menuQuitSK));
+        line();
+    }
+
 
     private static void selectOptions() {
         boolean exitloop = true;
@@ -293,26 +254,26 @@ public class Calculator {
 
             switch (choice) {
                 case 1:
-                    operationHandler(operationAddEN, "1", additionOutput());
+                    operationHandler(languageVariant(operationAddEN, operationAddSK), "1", additionOutput());
                     break;
                 case 2:
-                    operationHandler(operationMulEN, "2", multiplicationOutput());
+                    operationHandler(languageVariant(operationSubEN, operationSubSK), "2", multiplicationOutput());
                     break;
                 case 3:
-                    operationHandler(operationSubEN, "3", subtractionOutput());
+                    operationHandler(languageVariant(operationMulEN, operationMulSK), "3", subtractionOutput());
                     break;
                 case 4:
-                    operationHandler(operationDivEN, "4", divisionOutput());
+                    operationHandler(languageVariant(operationDivEN, operationDivSK), "4", divisionOutput());
                     break;
                 case 5:
                     if (chosenOperations.isEmpty()) {
-                        lineError(error2EN);
+                        lineError(languageVariant(error2EN, error2SK));
                     } else {
                         exitloop = false;
                     }
                     break;
                 default:
-                    lineError(error3EN);
+                    lineError(languageVariant(error3EN, error3SK));
             }
 
         } while (exitloop);
@@ -320,11 +281,10 @@ public class Calculator {
 
     private static void operationHandler(String operationName, String operationNumber, String function) {
         if (chosenOperations.contains(operationNumber)) {
-            lineError(operationName + " has been already choosen!!!");
+            languageOutputError(operationName + " has been already choosen!!!", operationName +" už bolo vybrané !!!");
         } else {
-            lineInfo(operationName + " has been choosen");
+            languageOutputInfo(operationName + " has been choosen", operationName +" bolo vybrané");
             chosenOperations.add(operationNumber);
-//            operations.add(additionOutput());
             operations.add(function);
         }
     }
@@ -333,7 +293,6 @@ public class Calculator {
     private static void chosenOutputs() {
         if (language == "EN") {
             line(outputEN);
-            ;
         } else {
             line(outputSK);
         }
@@ -360,7 +319,7 @@ public class Calculator {
                 selectOptions();
                 done = false;
             } catch (InputMismatchException e) {
-                lineError(error1EN);
+                lineError(languageVariant(error1EN, error1SK));
                 scanner.nextLine();
             }
         } while (done);
