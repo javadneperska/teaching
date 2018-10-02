@@ -2,7 +2,7 @@ package sk.moravcik.kristian.gl1;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Lesson4");
+        System.out.println("Lesson5");
         System.out.println(parneNeparne(2));
     }
 
