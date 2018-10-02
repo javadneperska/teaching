@@ -1,4 +1,4 @@
-package sk.durisin.jozef.gl1.less4;
+package sk.durisin.jozef.gl1.less5;
 
 
 public class Main {
@@ -8,4 +8,3 @@ public class Main {
     }
 
 }
-

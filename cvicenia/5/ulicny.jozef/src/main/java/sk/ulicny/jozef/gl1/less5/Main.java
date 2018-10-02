@@ -1,4 +1,4 @@
-package sk.katrak.miroslav.gl1.less4;
+package sk.ulicny.jozef.gl1.less5;
 
 public class Main {
 
