@@ -22,6 +22,8 @@ public class Main {
         printPerson(miro);
         printPerson(miroK);
 
+        System.out.println("COUNT_PERSON: " + Person.COUNT_PERSON);
+
 
     }
 
