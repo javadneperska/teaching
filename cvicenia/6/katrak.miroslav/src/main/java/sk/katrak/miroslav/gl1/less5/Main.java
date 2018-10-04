@@ -11,25 +11,18 @@ public class Main {
         final long faktResult = Util.fakt(3);
         System.out.println("faktorial of number: " + fakt + " is: " + faktResult);
 
-        Person miro = new Person();
-        miro.setFirstName("Miro");
-        miro.setLastName("Katrak");
-
-        Person miroK = new Person();
-        miroK.setFirstName("Miro");
-        miroK.setLastName("Katrak");
+        Person miro = new Person("Mirko", "Katrak");
+        Person miroK = new Person("Miro", "Katrak");
 
         printPerson(miro);
         printPerson(miroK);
 
         System.out.println("COUNT_PERSON: " + Person.COUNT_PERSON);
-
-
     }
 
     private static void printPerson(Person miro) {
-        System.out.println("firstName: " +  miro.getFirstName());
-        System.out.println("lastName: " +  miro.getLastName());
+        System.out.println("firstName: " + miro.getFirstName());
+        System.out.println("lastName: " + miro.getLastName());
     }
 
 
