@@ -5,8 +5,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>sk.moravcik.kristian.gl1</groupId>
-    <artifactId>less4</artifactId>
+    <artifactId>hw5</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <dependencies>
+        <dependency>
+            <groupId>org.la4j</groupId>
+            <artifactId>la4j</artifactId>
+            <version>0.6.0</version>
+        </dependency>
+    </dependencies>
 
 
 </project>

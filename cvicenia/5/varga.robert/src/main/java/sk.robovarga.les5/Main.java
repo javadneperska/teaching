@@ -1,31 +1,20 @@
 package sk.robovarga.les5;
 
-import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String args[]){
 
-        System.out.println("Som na hodine 4");
+        final int result = Lesson.printAndSum();
 
-//        List x = new ArrayList<String>();
+        System.out.println("Result is " + result);
 
-
-        for (int i = 0; i < 10; i++) {
-            System.out.println( i + " je parne? " + isEven(i) );
-        }
 
     }
 
 
-    public static int isEven(int num){
-        return
 
-        if (num % 2 == 1){
-            return 0;
-        }else{
-            return 1;
-        }
-    }
+
 
 }
