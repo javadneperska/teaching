@@ -1,8 +1,14 @@
 package sk.katrak.miroslav.gl1.less5;
 
 public class Person {
+
+    public static int COUNT_PERSON = 0;
     private String firstName;
     private String lastName;
+
+    public Person() {
+        COUNT_PERSON++;
+    }
 
     public String getFirstName() {
         return firstName;
