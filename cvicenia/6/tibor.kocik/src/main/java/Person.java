@@ -1,8 +1,17 @@
 public class Person {
 
     public static int COUNT_PERSON = 0;
+
+
     private String firstName;
     private String lastName;
+
+    public Person(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+
 
 
     public Person()
