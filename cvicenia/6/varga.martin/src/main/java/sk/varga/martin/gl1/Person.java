@@ -7,7 +7,13 @@ public class Person {
     private String name;
     private String sureName;
 
-    public Person(){
+    public Person(String name, String sureName){
+        this();
+        this.name = name;
+        this.sureName = sureName;
+    }
+
+    private Person(){
         COUNT_PERSON++;
     }
 
