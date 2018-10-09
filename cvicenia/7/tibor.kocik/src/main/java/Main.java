@@ -2,7 +2,6 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-//urobte program ktory spocita 2 matice o rozmere 2x2 a pri prechode pouzite foreach
         int[][] first = {{1,1},{1,1}};
         int[][] second = {{2,2},{2,2}};
         int[][] res = new int[2][2];
@@ -15,6 +14,17 @@ public class Main {
         System.out.println(Arrays.toString(res[0]));
         System.out.println(Arrays.toString(res[1]));
 
+
+
+        Person person = new Person();
+        person.setFirstName("Patvaros");
+        person.setLastName("Nigel");
+        person.setAge(143);
+
     }
+
+
+
+
 
 }
