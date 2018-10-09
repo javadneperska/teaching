@@ -14,7 +14,8 @@ public class Main {
         System.out.println(Arrays.toString(res[0]));
         System.out.println(Arrays.toString(res[1]));
 
-
+//DU - urote program, ktory z ext. suboru nacita geometricke utvary roznych druhov minimalne 4 druhy, vyrata ich obsah a obvod a dlzku uhlopriecky, nasledne tieto
+        //hodnoty zapise do ext. suboru vo formate csv
 
         Person person = new Person();
         person.setFirstName("Patvaros");
