@@ -10,7 +10,7 @@ public class Main {
     }
 
     private static Person createPerson(String name, String sureName){
-        Person p = new Person();
+        Person p = new Person(name, sureName);
         p.setName(name);
         p.setSureName(sureName);
         return p;
