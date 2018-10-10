@@ -8,9 +8,6 @@ import java.util.List;
 
 public class Main {
 
-
-    //TODO: nacitat z externeho suboru geom utvary roznych druhov (aspon 4 druhy),vyrata ich obsah, obvod, uhlopriecku, hodnoty zapise do externeho suboru vo formate csv
-
     public static void main(String[] args) throws IOException {
         List<Shape> shapes = Utils.loadShapes();
         for (Shape shape : shapes){
