@@ -11,6 +11,7 @@ public class Main {
         miro.setLastName("katrak");
         PersonDate miroDob =  new PersonDate(8, 1, 1982);
         miro.setDob(miroDob);
+        miro.setMoney(5000L);
 
 
         System.out.println("miro: " + miro.toString());

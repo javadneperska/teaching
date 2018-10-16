@@ -5,6 +5,7 @@ public class Student {
     private String firstName;
     private String lastName;
     private PersonDate dob;
+    private long money;
 
     public String getFirstName() {
         return firstName;
@@ -37,5 +38,15 @@ public class Student {
                 ", lastName='" + lastName + '\'' +
                 ", dob=" + dob +
                 '}';
+    }
+
+    public long getMoney() {
+        return money;
+    }
+
+    public void setMoney(long money) {
+        money = 10000L;
+        this.money = money;
+
     }
 }
