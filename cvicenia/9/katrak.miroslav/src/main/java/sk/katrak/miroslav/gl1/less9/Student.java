@@ -1,6 +1,7 @@
 package sk.katrak.miroslav.gl1.less9;
 
 public class Student {
+
     private String firstName;
     private String lastName;
     private PersonDate dob;

@@ -1,23 +1,14 @@
 package sk.katrak.miroslav.gl1.less9;
 
 public class PersonDate {
+        private int day;
+        private int month;
+        private int year;
 
-    private int month;
-    private int day;
-    private int year;
-
-    public PersonDate(int month, int day, int year) {
-        this.month = month;
+    public PersonDate(int day, int month, int year) {
         this.day = day;
-        this.year = year;
-    }
-
-    public int getMonth() {
-        return month;
-    }
-
-    public void setMonth(int month) {
         this.month = month;
+        this.year = year;
     }
 
     public int getDay() {
@@ -26,6 +17,14 @@ public class PersonDate {
 
     public void setDay(int day) {
         this.day = day;
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
     }
 
     public int getYear() {
@@ -39,8 +38,8 @@ public class PersonDate {
     @Override
     public String toString() {
         return "PersonDate{" +
-                "month=" + month +
-                ", day=" + day +
+                "day=" + day +
+                ", month=" + month +
                 ", year=" + year +
                 '}';
     }
