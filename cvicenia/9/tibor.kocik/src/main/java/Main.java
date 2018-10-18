@@ -12,7 +12,7 @@ public class Main {
 
         //DU 9 - Urobte program, ktory z lokalneho file systemu alebo z lubovolnej DB nacita zoznam studentov, kazdy student bude mat
         //minimalne 3 predmety, 2 volitelne 1 volitelny, s tym že, predmet bude mať udavane info ako:
-        // vyučujúci, počet hodin do tyzdna, či konči skuškov (true false ) a návaznosť(iba jednu)
+        // vyučujúci, počet hodin do tyzdna, či konči skuškou (true false ) a návaznosť(iba jednu)
 
     }
 }
