@@ -1,0 +1,4 @@
+firstName, lastName, birthNumber, country, height, weight, registered, nickName
+John, Doe, 8502021234, SK, 190, 100, yes,
+Jane, Doe, 8552021234, CZ, 170, 65, no,
+Johan, Doppleganger, 9003201234, SK, 200, 95, no, Superman Bobcat
