@@ -1,0 +1,10 @@
+INSERT INTO employee VALUES (DEFAULT, 'Lars', 'Trier', 'Java Programmer', '2010-08-01');
+INSERT INTO employee VALUES (DEFAULT, 'Matt', 'Dillon', 'C# Programmer', '2012-10-01');
+INSERT INTO employee VALUES (DEFAULT, 'Quentin', 'Tarantino', 'Manager', '2003-01-01');
+INSERT INTO employee VALUES (DEFAULT, 'Robert', 'Rodriguez', 'Java Programmer', '2015-06-01');
+INSERT INTO employee VALUES (DEFAULT, 'David', 'Lynch', 'Network Administrator', '2013-10-01');
+INSERT INTO employee VALUES (DEFAULT, 'Stanley', 'Kubrick', 'QA Engineer', '2007-04-01');
+INSERT INTO employee VALUES (DEFAULT, 'Sion', 'Sono', 'Scrum Master', '2017-06-01');
+INSERT INTO employee VALUES (DEFAULT, 'Gareth', 'Evans', 'Android Developer', '2011-07-01');
+INSERT INTO employee VALUES (DEFAULT, 'Gaspar', 'Noe', 'Angular Developer', '2016-03-01');
+INSERT INTO employee VALUES (DEFAULT, 'Rob', 'Zombie', 'AI Specialist', '2018-05-01');

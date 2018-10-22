@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS employee (id IDENTITY, first_name VARCHAR(50), last_name VARCHAR(50), work_position VARCHAR(50), date_of_entry DATE);
