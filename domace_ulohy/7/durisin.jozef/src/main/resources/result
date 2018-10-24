@@ -1,0 +1,4 @@
+square, a=3.0, b=3.0, alpha=90.0, area=9.0, perimeter=12.0
+rectangle, a=3.0, b=4.0, alpha=90.0, area=12.0, perimeter=14.0
+rhombus, a=3.0, b=3.0, alpha=45.0, area=6.363961030678928, perimeter=12.0
+parallelogram, a=3.0, b=4.0, alpha=45.0, area=8.48528137423857, perimeter=14.0
