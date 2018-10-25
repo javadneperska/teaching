@@ -1,5 +1,7 @@
 
 
+import org.omg.CORBA.Environment;
+
 import java.io.*;
 import java.sql.*;
 import java.util.*;
@@ -19,84 +21,81 @@ public class Main {
         ArrayList<ArrayList<Person>> zamestnanci = processDBPerson(conn);
         conn.close();
 
-        Scanner sc = new Scanner(System.in);
-        int id = 0;
-        String gender="";
-        int mode = 0;
+        while(true) {
+            Scanner sc = new Scanner(System.in);
+            int id = 0;
+            String gender = "";
+            int mode = 0;
 
-        System.out.println("Dobrý deň");
+            System.out.println("Dobrý deň");
 
-        do
-        {
-            try {
-                System.out.println("Zadajte prosím svoje ID: \n");
-                sc = new Scanner(System.in);
-                id = sc.nextInt();
-                if (id > zamestnanci.size() || id < 1) {
-                    System.out.println("Zadali ste nesprávne ID zamestnanca");
+            do {
+                try {
                     System.out.println("Zadajte prosím svoje ID: \n");
+                    sc = new Scanner(System.in);
+                    id = sc.nextInt();
+                    if (id > zamestnanci.size() || id < 1) {
+                        System.out.println("Zadali ste nesprávne ID zamestnanca");
+                        System.out.println("Zadajte prosím svoje ID: \n");
+                        id = -1;
+                    } else {
+                        break;
+                    }
+                } catch (Exception e) {
+                    System.out.println("Zadajte prosím ID vo forme čísla \n");
                     id = -1;
-                } else {
-                    break;
                 }
-            }
-            catch (Exception e)
-            {
-                System.out.println("Zadajte prosím ID vo forme čísla \n");
-                id = -1;
-            }
-        }while(id == -1);
+            } while (id == -1);
 
-        gender = zamestnanci.get(id-1).get(0).getPohlavie();
-        if(gender.equals("zena"))
-            System.out.println("Dobrý deň pani " + zamestnanci.get(id-1).get(0).getPriezvisko());
-        else
-            System.out.println("Dobrý deň pán " + zamestnanci.get(id-1).get(0).getPriezvisko());
+            gender = zamestnanci.get(id - 1).get(0).getPohlavie();
+            if (gender.equals("zena"))
+                System.out.println("Dobrý deň pani " + zamestnanci.get(id - 1).get(0).getPriezvisko());
+            else
+                System.out.println("Dobrý deň pán " + zamestnanci.get(id - 1).get(0).getPriezvisko());
 
 
-        sc = new Scanner(System.in);
+            sc = new Scanner(System.in);
 
-        do
-        {
-            try {
-                System.out.println("Zadajte dôvod prihlásenia");
-                System.out.println("1. Príchod");
-                System.out.println("2. Odchod na prestávku");
-                System.out.println("3. Príchod z prestávky");
-                System.out.println("4. Odchod");
-                System.out.println("5. Výjst z menu");
-                sc = new Scanner(System.in);
-                mode = sc.nextInt();
-                if (mode > 5 || mode < 1) {
-                    System.out.println("Zadali ste nesprávnu voľbu");
+            do {
+                try {
+                    System.out.println("Zadajte dôvod prihlásenia");
+                    System.out.println("1. Príchod");
+                    System.out.println("2. Odchod na prestávku");
+                    System.out.println("3. Príchod z prestávky");
+                    System.out.println("4. Odchod");
+                    System.out.println("5. Výjst z menu");
+                    sc = new Scanner(System.in);
+                    mode = sc.nextInt();
+                    if (mode > 5 || mode < 1) {
+                        System.out.println("Zadali ste nesprávnu voľbu");
+                        mode = -1;
+                    } else {
+                        break;
+                    }
+                } catch (Exception e) {
+                    System.out.println("Zadajte prosím voľbu vo forme čísla \n");
                     mode = -1;
-                } else {
-                    break;
                 }
-            }
-            catch (Exception e)
-            {
-                System.out.println("Zadajte prosím voľbu vo forme čísla \n");
-                mode = -1;
-            }
-        }while(mode == -1);
+            } while (mode == -1);
 
-        switch (mode)
-        {
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-                recordIntoCsv(mode, zamestnanci.get(id));
-                break;
-            case 5:
-
-                break;
-            default:
-                break;
+            switch (mode) {
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                    recordIntoCsv(mode, zamestnanci.get(id));
+                    break;
+                case 5:
+                    System.exit(1);
+                    break;
+                default:
+                    break;
                 //should not go here
 
+            }
+            System.out.println("\n");
         }
+
     }
 
     public static ArrayList<ArrayList<Person>> processDBPerson (Connection conn) throws SQLException {
@@ -185,16 +184,15 @@ public class Main {
 
             sb = new StringBuilder();
             boolean checker = false;
+            boolean error = false;
             while((line = br.readLine()) != null)
             {
-                lineSplitted = Arrays.asList(line.split(","));
+                lineSplitted = new ArrayList<String>(Arrays.asList(line.split(",")));
 
                 if(lineSplitted.size() < 6)
                 {
-                    String comma = ",";
                     for (int i = lineSplitted.size(); i < 6; i++) {
-
-                        lineSplitted.add(i, new String(comma));
+                        lineSplitted.add(i," ");
                     }
                 }
                 if(lineSplitted.get(0).equals(zamestnanec.get(0).getMeno()) && lineSplitted.get(1).equals(zamestnanec.get(0).getPriezvisko()))
@@ -202,24 +200,83 @@ public class Main {
                     sb.append(lineSplitted.get(0) + ",");
                     sb.append(lineSplitted.get(1) + ",");
                     if(modeString.equals("Prichod")) {
-                        sb.append(System.currentTimeMillis() / 1000);
+                        if(lineSplitted.get(2) == null || lineSplitted.get(2) == " ") {
+                            sb.append(System.currentTimeMillis() / 1000);
+                            System.out.println("Príchod uložený");
+                        }
+                        else {
+                            System.out.println("Príchod už bol zadaný");
+                            error = true;
+                        }
                     }
                     else if(modeString.equals("Odchod na prestavku")) {
-                        sb.append(lineSplitted.get(2) + ",");
-                        sb.append(System.currentTimeMillis()/1000);
+                        if((lineSplitted.get(3) == null || lineSplitted.get(3) == " ")) {
+                            if((lineSplitted.get(2) != null && lineSplitted.get(2) != " ")) {
+                                sb.append(lineSplitted.get(2) + ",");
+                                sb.append(System.currentTimeMillis() / 1000);
+                                System.out.println("Odchod na prestávku uložený");
+                            }
+                            else
+                            {
+                                System.out.println("Ešte nebol zadaný príchod");
+                                error = true;
+                            }
+                        }
+                        else {
+                            System.out.println("Odchod na prestávku už bol zadaný");
+                            error = true;
+                        }
                     }
                     else if(modeString.equals("Prichod z prestavky")) {
-                        sb.append(lineSplitted.get(2) + ",");
-                        sb.append(lineSplitted.get(3) + ",");
-                        sb.append(System.currentTimeMillis()/1000);
+                        if((lineSplitted.get(4) == null || lineSplitted.get(4) == " ")) {
+                            if((lineSplitted.get(2) != null && lineSplitted.get(2) != " ") && (lineSplitted.get(3) != null && lineSplitted.get(3) != " ")) {
+                                sb.append(lineSplitted.get(2) + ",");
+                                sb.append(lineSplitted.get(3) + ",");
+                                sb.append(System.currentTimeMillis() / 1000);
+                                System.out.println("Príchod z prestávky uložený");
+                            }
+                            else
+                            {
+                                System.out.println("Ešte nebol zadaný odchod na prestávku");
+                                error = true;
+                            }
+                        }
+                        else {
+                            System.out.println("Príchod z prestávky už bol zadaný");
+                            error = true;
+                        }
                     }
                     else if(modeString.equals("Odchod")) {
-                        sb.append(lineSplitted.get(2) + ",");
-                        sb.append(lineSplitted.get(3) + ",");
-                        sb.append(lineSplitted.get(4) + ",");
-                        sb.append(System.currentTimeMillis()/1000);
+                        if((lineSplitted.get(5) == null || lineSplitted.get(5) == " ")) {
+                            if((lineSplitted.get(2) != null && lineSplitted.get(2) != " ") && (lineSplitted.get(3) != null && lineSplitted.get(3) != " ") && (lineSplitted.get(4) != null && lineSplitted.get(4) != " ")) {
+                                sb.append(lineSplitted.get(2) + ",");
+                                sb.append(lineSplitted.get(3) + ",");
+                                sb.append(lineSplitted.get(4) + ",");
+                                sb.append(System.currentTimeMillis() / 1000);
+                                System.out.println("Odchod uložený");
+                            }
+                            else
+                            {
+                                System.out.println("Ešte nebol zadaný príchod z prestávky");
+                                error = true;
+                            }
+                        }
+                        else {
+                            System.out.println("Odchod už bol zadaný");
+                            error = true;
+                        }
                     }
                     checker = true;
+                    if(error)
+                    {
+                        sb.append(lineSplitted.get(2));
+                        sb.append(",");
+                        sb.append(lineSplitted.get(3));
+                        sb.append(",");
+                        sb.append(lineSplitted.get(4));
+                        sb.append(",");
+                        sb.append(lineSplitted.get(5));
+                    }
                 }
                 else
                 {
@@ -237,9 +294,15 @@ public class Main {
                 sb.append(zamestnanec.get(0).getMeno() + ",");
                 sb.append(zamestnanec.get(0).getPriezvisko() + ",");
                 sb.append(System.currentTimeMillis()/1000);
-                fw = new FileWriter(f, true);
-                fw.write(sb.toString());
-                fw.close();
+                pw = new PrintWriter(f);
+                pw.print(sb.toString());
+                pw.close();
+            }
+            else
+            {
+                pw = new PrintWriter(f);
+                pw.print(sb.toString());
+                pw.close();
             }
 
         }
